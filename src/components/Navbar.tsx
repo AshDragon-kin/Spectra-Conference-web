@@ -71,7 +71,7 @@ const Navbar = () => {
         </Button>
         <Link to="/donate">
           <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6">
-            Support Us
+            Donate
           </Button>
         </Link>
       </div>
