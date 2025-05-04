@@ -1,39 +1,46 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Home from '@/pages/Home';
+import Speakers from '@/pages/Speakers';
+import Schedule from '@/pages/Schedule';
+import About from '@/pages/About';
+import Contact from '@/pages/Contact';
+import Login from '@/pages/Login';
+import Signup from '@/pages/Signup';
+import Donate from '@/pages/Donate';
+import AdminDashboard from '@/pages/AdminDashboard';
+import AdminRoute from '@/components/AdminRoute';
+import { Toaster } from '@/components/ui/toaster';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import ContactPage from "./pages/ContactPage";
-import DonatePage from "./pages/DonatePage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import AboutPage from "./pages/AboutPage";
-import SchedulePage from "./pages/SchedulePage";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/donate" element={<DonatePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="container mx-auto px-4 py-8">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/speakers" element={<Speakers />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+          </Routes>
+        </main>
+        <Toaster />
+      </div>
+    </Router>
+  );
+}
 
 export default App;
