@@ -141,4 +141,4 @@ SPECTRA Conference is a modern, full-stack web application for managing and prom
 - Please follow the code style and commit message conventions.
 
 ### License
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source 
